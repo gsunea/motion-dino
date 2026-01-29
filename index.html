@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motion Dino - Jump to Play!</title>
+    <meta name="description"
+        content="A Chrome Dino-style game controlled by your phone's motion sensors. No app needed - just scan and play!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- PeerJS for WebRTC -->
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <!-- QR Code Generator (qrcode.js - more reliable) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Connection Panel -->
+        <div class="connection-panel" id="connectionPanel">
+            <div class="panel-content">
+                <h1 class="title">🦖 Motion Dino</h1>
+                <p class="subtitle">Jump in real life to control the dino!</p>
+
+                <div class="connection-method">
+                    <h3>📱 Scan with your phone</h3>
+                    <div class="qr-container">
+                        <div id="qrCode"></div>
+                        <div class="qr-loading" id="qrLoading">Generating...</div>
+                    </div>
+                    <p class="room-code">Room: <span id="roomCode">----</span></p>
+                    <p class="connection-hint">Or open this URL on your phone:</p>
+                    <p class="controller-url" id="controllerUrl">Loading...</p>
+                </div>
+
+                <div class="status-indicator" id="statusIndicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Waiting for phone...</span>
+                </div>
+
+                <div class="instructions">
+                    <h3>📋 How to Play</h3>
+                    <ol>
+                        <li>Scan the QR code with your phone camera</li>
+                        <li>Allow motion sensor access when prompted</li>
+                        <li>Hold your phone and jump to play!</li>
+                    </ol>
+                </div>
+
+                <div class="keyboard-option">
+                    <p>No phone? <button id="keyboardModeBtn" class="btn-secondary">Play with Spacebar</button></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Container -->
+        <div class="game-container" id="gameContainer">
+            <div class="game-header">
+                <div class="score-display">
+                    <span class="score-label">SCORE</span>
+                    <span class="score-value" id="scoreValue">00000</span>
+                </div>
+                <div class="high-score-display">
+                    <span class="score-label">HI</span>
+                    <span class="score-value" id="highScoreValue">00000</span>
+                </div>
+                <div class="sensor-graph-container" id="sensorGraphContainer">
+                    <canvas id="sensorGraph" width="200" height="60"></canvas>
+                    <div class="sensor-value-display">
+                        <span class="sensor-label">Δ</span>
+                        <span class="sensor-value" id="sensorZValue">...</span>
+                    </div>
+                </div>
+            </div>
+
+            <canvas id="gameCanvas"></canvas>
+
+            <div class="game-overlay" id="gameOverlay">
+                <div class="overlay-content">
+                    <div class="game-over-text" id="gameOverText">GAME OVER</div>
+                    <div class="final-score" id="finalScore"></div>
+                    <div class="jump-count" id="jumpCount"></div>
+                    <p class="restart-hint">Jump or press SPACE to restart</p>
+                </div>
+            </div>
+
+            <div class="start-overlay" id="startOverlay">
+                <div class="overlay-content">
+                    <div class="ready-text">🦖 READY?</div>
+                    <p class="start-hint">Jump or press SPACE to start!</p>
+                </div>
+            </div>
+
+            <div class="control-indicator" id="controlIndicator">
+                <span class="control-icon">📱</span>
+                <span class="control-text">Motion Control Active</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+
+</html>
