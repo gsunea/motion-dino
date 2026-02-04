@@ -378,6 +378,39 @@ body {
     letter-spacing: 2px;
 }
 
+/* Level Display */
+.level-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, rgba(233, 69, 96, 0.2), rgba(14, 165, 233, 0.2));
+    border-radius: 8px;
+    border: 1px solid rgba(233, 69, 96, 0.3);
+    animation: levelPulse 2s ease-in-out infinite;
+}
+
+@keyframes levelPulse {
+    0%, 100% { box-shadow: 0 0 10px rgba(233, 69, 96, 0.2); }
+    50% { box-shadow: 0 0 20px rgba(233, 69, 96, 0.4); }
+}
+
+.level-label {
+    font-family: var(--font-pixel);
+    font-size: 0.5rem;
+    color: #888;
+    letter-spacing: 2px;
+}
+
+.level-value {
+    font-family: var(--font-pixel);
+    font-size: 0.65rem;
+    color: #e94560;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+}
+
 /* Sensor Graph Container */
 .sensor-graph-container {
     position: absolute;
