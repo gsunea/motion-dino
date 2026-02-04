@@ -106,7 +106,19 @@
         </div>
     </div>
 
+    <div class="version-footer" id="versionFooter">DEV v2.0 - Enhanced Gameplay</div>
     <script src="game.js"></script>
+    <script>
+        // Only show version footer on dev/test environments
+        (function () {
+            const isDev = window.location.hostname === 'localhost' ||
+                window.location.hostname === '127.0.0.1' ||
+                window.location.hash.includes('dev') ||
+                window.location.pathname.includes('feature');
+            const footer = document.getElementById('versionFooter');
+            if (!isDev) footer.style.display = 'none';
+        })();
+    </script>
 </body>
 
 </html>

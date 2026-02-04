@@ -78,6 +78,21 @@ body {
     display: none;
 }
 
+/* Version Footer (dev only) */
+.version-footer {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-pixel);
+    font-size: 0.5rem;
+    color: rgba(255, 255, 255, 0.3);
+    padding: 4px 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    z-index: 1000;
+}
+
 .panel-content {
     max-width: 480px;
     width: 100%;
@@ -392,8 +407,15 @@ body {
 }
 
 @keyframes levelPulse {
-    0%, 100% { box-shadow: 0 0 10px rgba(233, 69, 96, 0.2); }
-    50% { box-shadow: 0 0 20px rgba(233, 69, 96, 0.4); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(233, 69, 96, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(233, 69, 96, 0.4);
+    }
 }
 
 .level-label {

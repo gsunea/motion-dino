@@ -233,6 +233,20 @@
         .hidden {
             display: none !important;
         }
+
+        .version-footer {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-pixel);
+            font-size: 0.5rem;
+            color: rgba(255, 255, 255, 0.3);
+            padding: 4px 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            z-index: 1000;
+        }
     </style>
 </head>
 
@@ -298,7 +312,18 @@
         </div>
     </div>
 
+    <div class="version-footer" id="versionFooter">DEV v2.0</div>
     <script src="controller.js"></script>
+    <script>
+        (function () {
+            const isDev = window.location.hostname === 'localhost' ||
+                window.location.hostname === '127.0.0.1' ||
+                window.location.hash.includes('dev') ||
+                window.location.pathname.includes('feature');
+            const footer = document.getElementById('versionFooter');
+            if (!isDev) footer.style.display = 'none';
+        })();
+    </script>
 </body>
 
 </html>
