@@ -109,15 +109,10 @@
     <div class="version-footer" id="versionFooter">DEV v2.0 - Enhanced Gameplay</div>
     <script src="game.js"></script>
     <script>
-        // Only show version footer on dev/test environments
-        (function () {
-            const isDev = window.location.hostname === 'localhost' ||
-                window.location.hostname === '127.0.0.1' ||
-                window.location.hash.includes('dev') ||
-                window.location.pathname.includes('feature');
-            const footer = document.getElementById('versionFooter');
-            if (!isDev) footer.style.display = 'none';
-        })();
+        // DEV VERSION FLAG - Set to true in feature branch, false in main
+        const IS_DEV_VERSION = true;
+        const footer = document.getElementById('versionFooter');
+        if (!IS_DEV_VERSION) footer.style.display = 'none';
     </script>
 </body>
 
